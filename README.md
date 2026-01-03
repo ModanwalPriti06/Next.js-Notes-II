@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js-Notes-II
 
-## Getting Started
+| Sl. No. | Topic                                               |
+| ------- | --------------------------------------------------- |
+| 19      | API Routes (Route Handlers)                         |
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+| -       | Uncovered Topic                                     |
+| ------- | --------------------------------------------------- |
+| 8       | Server Components vs Client Components |
+| 9       | Data Fetching (fetch, getServerSideProps, etc.)     |
+| 10      | Static Site Generation (SSG)                        |
+| 11      | Server-Side Rendering (SSR)                         |
+| 12      | Incremental Static Regeneration (ISR)               |
+| 13      | Middleware                                          |
+| 14      | Environment Variables                               |
+| 15      | Styling (CSS, Tailwind, Modules, Styled Components) |
+| 16      | Optimizing Images using next/image                  |
+| 17      | next/link & Client Navigation                       |
+| 18      | Metadata & SEO                                      |
+| 19      | Authentication (NextAuth or Custom Auth)            |
+| 20      | Database Integration (Prisma, MongoDB, Supabase)    |
+| 21      | Deployment (Vercel / Node Server)                   |
+| 22      | Error Handling (error.js, not-found.js)             |
+| 23      | Loading UI (loading.js)                             |
+| 24      | Caching & Revalidation                              |
+| 25      | Internationalization (i18n)                         |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 19. Routes Handler
+We've learned how to route to pages
+- The app router lets you create custom request handlers for your routes using a feature called Route Handlers
+- Unlike page routes, which give us HTML content, Route Handlers let us build RESTful endpoints with complete control over the response
+- Think of it like building a Node + Express app
+- There's no need to set up and configure a separate server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Route handlers contd.
+1. Route Handlers are great when making external API requests as well
+2. For example, if you're building an app that needs to talk to third-party services
+3. Route handlers run server-side, our sensitive info like private keys stays secure and never reaches the browser.
+4. Route Handlers are the equivalent of API routes in Page router
+5. Next.js supports GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS
+6. If an unsupported method is called, Next.js will return a 405 Method Not Allowed response
