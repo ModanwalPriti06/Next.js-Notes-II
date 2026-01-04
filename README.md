@@ -6,7 +6,8 @@
 | 20      | Dynamic Route Handle / PATCH, DELETE                |
 | 21      | URL Query Parameter/  Headers in Route Handler      |
 | 22      | COOKIE in Route Handler/ Redirect in Route Handler  |
-| 23      | Cashing in Route Handler                            |
+| 23      | Cashing in Route Handler(force-static, revalidate)  |
+| 24      | Middleware                                          |
 
 
 | -       | Uncovered Topic                                     |
@@ -16,7 +17,6 @@
 | 10      | Static Site Generation (SSG)                        |
 | 11      | Server-Side Rendering (SSR)                         |
 | 12      | Incremental Static Regeneration (ISR)               |
-| 13      | Middleware                                          |
 | 14      | Environment Variables                               |
 | 15      | Styling (CSS, Tailwind, Modules, Styled Components) |
 | 16      | Optimizing Images using next/image                  |
@@ -353,7 +353,7 @@ export async function GET() {
 | `force-dynamic` | Runs on every request   |
 | default         | Auto decided by Next.js |
 
-
+# 24. Middleware
 
 
 
