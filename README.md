@@ -2,8 +2,9 @@
 
 | Sl. No. | Topic                                               |
 | ------- | --------------------------------------------------- |
-| 19      | API Routes (Route Handlers)/ GET POST               |
-| 20      | Dynamic Route Handle                                |
+| 19      | API Routes (Route Handlers)/ GET, POST              |
+| 20      | Dynamic Route Handle / PATCH, DELETE                |
+| 21      | URL Query Parameter                                 |
 
 
 | -       | Uncovered Topic                                     |
@@ -175,7 +176,7 @@ export async function DELETE( request: Request,
 }
 ```
 
-
+# 21. URL Query Parameter   
 
 
 
