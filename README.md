@@ -5,8 +5,8 @@
 | 19      | API Routes (Route Handlers)/ GET, POST              |
 | 20      | Dynamic Route Handle / PATCH, DELETE                |
 | 21      | URL Query Parameter/  Headers in Route Handler      |
-| 22      | COOKIE in Route Handler                             |
-| 22      | Redirect in Route Handler                           |
+| 22      | COOKIE in Route Handler/ Redirect in Route Handler  |
+| 23      | Cashing in Route Handler                            |
 
 
 | -       | Uncovered Topic                                     |
@@ -287,5 +287,84 @@ export async function GET(request: NextRequest){
 }
 ```
 
-# 22. Redirect in Route Handler
+## 22.1 Redirect in Route Handler
+```
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  return NextResponse.redirect(new URL('/login', 'http://localhost:3000'));
+}
+```
+# 23. Cashing in Route Handler   
+Route handler are not cashed by default but you can opt into cashing when using the GET method.
+```
+// src/app/time/route.ts
+
+export const dynamic = "force-static";
+export async function GET() {
+  return Response.json({time: new Date().toLocaleTimeString()})
+}
+```
+Cache data
+```
+// src/app/categories/route.ts
+
+export const dynamic = "force-static";
+export const revalidate= 10;
+
+export async function GET() {
+  // This data would typically come from a database
+  const categories = [
+    { id: 1, name: "Electronics" },
+    { id: 2, name: "Books" },
+    { id: 3, name: "Clothing" },
+    { id: 4, name: "Home & Garden" },
+  ];
+  return Response.json(categories);
+}
+```
+#### 2️⃣ export const dynamic = "force-static";
+📌 Very important (interview question)
+- Forces this API route to be statically generated.
+- Data is calculated at build time.
+- Same response is served for every request.
+
+#### ✅ Good for:
+- Static data
+- Categories, countries, configs
+
+#### ❌ Not good for:
+- User-specific or frequently changing data
+
+> [!Important]
+> force-static use karne ke bad data tabhi change hoga jab hm application ko phir se run build krte hai.
+
+> [!Important]
+> revalidate = 10, use karne se static data every 10 sec k bad change hoga. If force-static bhi add kie ho file me to bhi 10 sec bad data revalidate hoga.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
