@@ -5,6 +5,7 @@
 | 19      | API Routes (Route Handlers)/ GET, POST              |
 | 20      | Dynamic Route Handle / PATCH, DELETE                |
 | 21      | URL Query Parameter/  Headers in Route Handler      |
+| 22      | COOKIE in Route Handler                             |
 
 
 | -       | Uncovered Topic                                     |
@@ -201,6 +202,44 @@ These are sent by the client, such as a web browser, to the server. They contain
 These are sent back from the server to the client. They provide information about the server and the data being sent in the response.
 - Content-Type: This header indicates the media type of the response. It tells the client what the data type of the returned content is, such as: text/html for HTML documents, application/json for JSON data, image/png, image/jpeg for images, etc.
 
+### Example:
+<img width="678" height="245" alt="Screenshot 2026-01-04 at 5 21 17 PM" src="https://github.com/user-attachments/assets/e3da97b3-5bd9-453f-939a-e1ef2db32c3b" />
+
+```
+app/profile/api/route.ts
+
+import { NextRequest } from "next/server"
+
+export async function GET(request: NextRequest){
+    const reqHeader = new Headers(request.headers);
+    console.log(reqHeader.get("Authorization"));
+    return new Response('Hello Profile Route')
+}
+```
+OR
+```
+import { NextRequest } from "next/server"
+import { headers } from "next/headers"
+
+export async function GET(request: NextRequest){
+    const headersList = await headers();
+    console.log(headersList.get("Authorization"))
+    return new Response('Hello Profile Route')
+}
+```
+<img width="372" height="106" alt="Screenshot 2026-01-04 at 5 27 16 PM" src="https://github.com/user-attachments/assets/3e075a5b-70a2-4f31-a58f-5abd4d789827" />
+
+```
+export async function GET(request: NextRequest){
+    const headersList = await headers();
+    console.log(headersList.get("Authorization"))
+    return new Response('<h1> Profile Route</h1', {
+        headers: {'Content-Type' : 'text/html'}
+    })
+}
+```
+
+# 22. COOKIE in Route Handler
 
 
 
