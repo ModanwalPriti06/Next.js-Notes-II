@@ -297,6 +297,10 @@ export async function GET() {
 ```
 # 23. Cashing in Route Handler   
 Route handler are not cashed by default but you can opt into cashing when using the GET method.
+- Caching only works with GET methods.
+- Other HTTP methods like POST, PUT, or DELETE are never cached.
+- If you're using dynamic functions like headers() and cookies(), or working with the request object in your GET method, caching won't be applied.
+  
 ```
 // src/app/time/route.ts
 
@@ -342,8 +346,12 @@ export async function GET() {
 > [!Important]
 > revalidate = 10, use karne se static data every 10 sec k bad change hoga. If force-static bhi add kie ho file me to bhi 10 sec bad data revalidate hoga.
 
-
-
+## Q: Difference between force-static and force-dynamic?
+| Option          | Behavior                |
+| --------------- | ----------------------- |
+| `force-static`  | Build-time, cached      |
+| `force-dynamic` | Runs on every request   |
+| default         | Auto decided by Next.js |
 
 
 
