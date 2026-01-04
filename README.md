@@ -4,7 +4,7 @@
 | ------- | --------------------------------------------------- |
 | 19      | API Routes (Route Handlers)/ GET, POST              |
 | 20      | Dynamic Route Handle / PATCH, DELETE                |
-| 21      | URL Query Parameter                                 |
+| 21      | URL Query Parameter/  Headers in Route Handler      |
 
 
 | -       | Uncovered Topic                                     |
@@ -177,16 +177,28 @@ export async function DELETE( request: Request,
 ```
 
 # 21. URL Query Parameter   
+<img width="426" height="122" alt="Screenshot 2026-01-04 at 5 00 38 PM" src="https://github.com/user-attachments/assets/630dbd10-0340-4ec0-a1f0-b08c747085c5" />
+```
+/app/comments/route.ts
 
+export async function GET(request: NextRequest){
+   const searchParams =  request.nextUrl.searchParams;
+   const query = searchParams.get('query');
+   const filterComments = query ? comments.filter((comment)=> comment.text.includes(query)) : comments
+    return Response.json(filterComments);
+}
+```
+# 21.1 Headers in Route Handler
+HTTP headers represent the metadata associated with an API request and response. It have 2 classification: 
+### 1. Request Headers
+These are sent by the client, such as a web browser, to the server. They contain essential information about the request, which helps the server understand and process it correctly.
+- User-Agent: Identifies the browser and operating system to the server.
+- Accept: Indicates the content types like text, video, or image formats that the client can process.
+- Authorization header used by the client to authenticate itself to the server.
 
-
-
-
-
-
-
-
-
+### 2. Request Headers
+These are sent back from the server to the client. They provide information about the server and the data being sent in the response.
+- Content-Type: This header indicates the media type of the response. It tells the client what the data type of the returned content is, such as: text/html for HTML documents, application/json for JSON data, image/png, image/jpeg for images, etc.
 
 
 
