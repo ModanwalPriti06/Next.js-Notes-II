@@ -98,9 +98,35 @@ Both route.ts and page.tsx define a URL automatically in Next.js.
  │   │   └── route.ts
  │   └── page.tsx
 ```
+<img width="1728" height="483" alt="Screenshot 2026-01-04 at 3 37 01 PM" src="https://github.com/user-attachments/assets/ba9e33c1-6202-4579-88cc-3ee6347d737f" />
 
+```
+import { comments } from "./data";
 
+export async function GET(){
+    return Response.json(comments);
+}
 
+export async function POST(request: Request) {
+  try {
+    const comment = await request.json();
+
+    const newCommentObj = {
+      id: comments.length + 1,
+      text: comment.text,
+    };
+
+    comments.push(newCommentObj);
+
+    return Response.json(newCommentObj, { status: 201 });
+  } catch (error) {
+    return Response.json(
+      { error: "Invalid or missing JSON body" },
+      { status: 400 }
+    );
+  }
+}
+```
 
 
 
