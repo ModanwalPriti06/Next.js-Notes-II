@@ -246,8 +246,7 @@ Cookies are small pieces of data that a server sends to a user’s web browser. 
 2. Handling personalization: (such as user preferences and themes)
 3. Tracking: (like recording and analyzing user behavior)
 
-### Example: How to set and get cookie inside route handler
-<img width="969" height="250" alt="Screenshot 2026-01-04 at 5 42 38 PM" src="https://github.com/user-attachments/assets/1d06bf02-ae94-428e-950b-4981a628896f" />
+### 1. Frist Approach: How to set and get cookie inside route handler
 
 ```
 /app/profile/route.ts
@@ -257,6 +256,28 @@ export async function GET(request: NextRequest){
     const theme = request.cookies.get("theme")
     console.log(theme)
     return new Response('<h1> Profile Route</h1', {  
+        headers: {
+            'Content-Type' : 'text/html',
+            "Set-Cookie" : "theme=dark"
+        },
+    })
+}
+```
+<img width="976" height="248" alt="Screenshot 2026-01-04 at 5 51 19 PM" src="https://github.com/user-attachments/assets/1aaceab7-f9a9-4e40-8ab7-5c17f55e3e0b" />
+
+### 2. Second Approach: How to set and get cookie inside route handler
+```
+
+import { NextRequest } from "next/server"
+import { cookies, headers } from "next/headers"
+
+export async function GET(request: NextRequest){
+
+    const cookieStore = await cookies();
+    cookieStore.set('newCookie', '232');
+    console.log(cookieStore.get('newCookie'))
+
+    return new Response('<h1> Profile Route</h1', {  //showing heading text on browser when go to url localhost:3000/profile/api
         headers: {
             'Content-Type' : 'text/html',
             "Set-Cookie" : "theme=dark"
