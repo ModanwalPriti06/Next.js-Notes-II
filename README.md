@@ -178,6 +178,7 @@ export async function DELETE( request: Request,
 
 # 21. URL Query Parameter   
 <img width="426" height="122" alt="Screenshot 2026-01-04 at 5 00 38 PM" src="https://github.com/user-attachments/assets/630dbd10-0340-4ec0-a1f0-b08c747085c5" />
+
 ```
 /app/comments/route.ts
 
