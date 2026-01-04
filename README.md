@@ -246,3 +246,21 @@ Cookies are small pieces of data that a server sends to a user’s web browser. 
 2. Handling personalization: (such as user preferences and themes)
 3. Tracking: (like recording and analyzing user behavior)
 
+### Example: How to set and get cookie inside route handler
+<img width="969" height="250" alt="Screenshot 2026-01-04 at 5 42 38 PM" src="https://github.com/user-attachments/assets/1d06bf02-ae94-428e-950b-4981a628896f" />
+
+```
+/app/profile/route.ts
+
+export async function GET(request: NextRequest){
+
+    const theme = request.cookies.get("theme")
+    console.log(theme)
+    return new Response('<h1> Profile Route</h1', {  
+        headers: {
+            'Content-Type' : 'text/html',
+            "Set-Cookie" : "theme=dark"
+        },
+    })
+}
+```
