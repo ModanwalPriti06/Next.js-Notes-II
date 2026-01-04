@@ -19,12 +19,10 @@
 | 14      | Environment Variables                               |
 | 15      | Styling (CSS, Tailwind, Modules, Styled Components) |
 | 16      | Optimizing Images using next/image                  |
-| 17      | next/link & Client Navigation                       |
 | 18      | Metadata & SEO                                      |
 | 19      | Authentication (NextAuth or Custom Auth)            |
 | 20      | Database Integration (Prisma, MongoDB, Supabase)    |
 | 21      | Deployment (Vercel / Node Server)                   |
-| 22      | Error Handling (error.js, not-found.js)             |
 | 23      | Loading UI (loading.js)                             |
 | 24      | Caching & Revalidation                              |
 | 25      | Internationalization (i18n)                         |
@@ -240,7 +238,11 @@ export async function GET(request: NextRequest){
 ```
 
 # 22. COOKIE in Route Handler
+Cookies are small pieces of data that a server sends to a user’s web browser. The browser can store the cookies and send them back to the same server with future requests.
 
+### Cookies serve three main purposes:
 
-
+1. Managing sessions: (like user logins and shopping carts)
+2. Handling personalization: (such as user preferences and themes)
+3. Tracking: (like recording and analyzing user behavior)
 
