@@ -85,6 +85,20 @@ export async function DELETE() {
 }
 ```
 
+## Difference between Route.ts and Profile.tsx
+Both route.ts and page.tsx define a URL automatically in Next.js.
+- route.ts → handles API requests
+- page.tsx → renders UI
+  
+```
+ app/
+ ├── route.ts
+ ├── profile/
+ │   ├── api/
+ │   │   └── route.ts
+ │   └── page.tsx
+```
+
 
 
 
