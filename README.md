@@ -27,7 +27,7 @@
 | 25      | Internationalization (i18n)                         |
 
 # 19. Routes Handler
-We've learned how to route to pages
+A Route Handler is how you create backend APIs (like Express routes) inside your Next.js app.
 - The app router lets you create custom request handlers for your routes using a feature called Route Handlers
 - Unlike page routes, which give us HTML content, Route Handlers let us build RESTful endpoints with complete control over the response
 - Think of it like building a Node + Express app
@@ -40,3 +40,50 @@ We've learned how to route to pages
 4. Route Handlers are the equivalent of API routes in Page router
 5. Next.js supports GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS
 6. If an unsupported method is called, Next.js will return a 405 Method Not Allowed response
+
+#### 📁 Folder Structure (App Router)
+```
+app/
+ └── api/
+     └── users/
+         └── route.js
+```
+URL become: 
+```
+/api/users
+```
+### GET Request
+
+```
+export async function GET(){
+    return new Response('Hello World!')
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
