@@ -6,6 +6,7 @@
 | 20      | Dynamic Route Handle / PATCH, DELETE                |
 | 21      | URL Query Parameter/  Headers in Route Handler      |
 | 22      | COOKIE in Route Handler                             |
+| 22      | Redirect in Route Handler                           |
 
 
 | -       | Uncovered Topic                                     |
@@ -285,3 +286,6 @@ export async function GET(request: NextRequest){
     })
 }
 ```
+
+# 22. Redirect in Route Handler
+
