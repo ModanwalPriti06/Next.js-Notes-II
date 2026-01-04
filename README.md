@@ -2,7 +2,8 @@
 
 | Sl. No. | Topic                                               |
 | ------- | --------------------------------------------------- |
-| 19      | API Routes (Route Handlers)                         |
+| 19      | API Routes (Route Handlers)/ GET POST               |
+| 20      | Dynamic Route Handle                                |
 
 
 | -       | Uncovered Topic                                     |
@@ -127,8 +128,23 @@ export async function POST(request: Request) {
   }
 }
 ```
+# 20. Dynamic Route Handler
+Folder Structure
+```
+app/api/comments/[id]/route.ts
 
+import { comments } from "../data";
 
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+
+    const {id} = await params;
+    const comment = comments.find((comment) => comment.id === parseInt(id))
+    return Response.json(comment);
+}
+```
 
 
 
