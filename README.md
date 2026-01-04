@@ -59,6 +59,31 @@ export async function GET(){
     return new Response('Hello World!')
 }
 ```
+### POST Request
+```
+export async function POST(request) {
+  const body = await request.json();
+
+  return Response.json({
+    success: true,
+    data: body,
+  });
+}
+```
+### Multiple Methon in one file
+```
+export async function GET() {
+  return Response.json({ message: "GET request" });
+}
+
+export async function POST() {
+  return Response.json({ message: "POST request" });
+}
+
+export async function DELETE() {
+  return Response.json({ message: "DELETE request" });
+}
+```
 
 
 
