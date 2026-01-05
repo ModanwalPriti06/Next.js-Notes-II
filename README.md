@@ -8,7 +8,8 @@
 | 22      | COOKIE in Route Handler/ Redirect in Route Handler  |
 | 23      | Cashing in Route Handler(force-static, revalidate)  |
 | 24      | Middleware                                          |
-
+| 25      | Rendering                                           |
+ 
 # Routing section summary
 - Route definition
 - Pages and layouts
@@ -22,7 +23,7 @@
 
 | -       | Uncovered Topic                                     |
 | ------- | --------------------------------------------------- |
-| 8       | Server Components vs Client Components |
+| 8       | Server Components vs Client Components              |
 | 9       | Data Fetching (fetch, getServerSideProps, etc.)     |
 | 10      | Static Site Generation (SSG)                        |
 | 11      | Server-Side Rendering (SSR)                         |
@@ -422,6 +423,7 @@ export function middleware(request: NextRequest) {
 }
 ```
 
+# 25. Rendering
 
 
 
