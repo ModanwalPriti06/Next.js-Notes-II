@@ -354,10 +354,36 @@ export async function GET() {
 | default         | Auto decided by Next.js |
 
 # 24. Middleware
+Middleware in Next.js is a powerful feature that lets you intercept and control the flow of requests and responses throughout your application.
 
+- It does this at a global level, significantly enhancing features like redirects, URL rewrites, authentication, headers, cookies, and more.
+- Middleware lets you specify paths where it should be active:
+  - Custom matcher config
+  - Conditional statements
 
-
-
+## Custom matcher config
+1. Create middleware.js/middleware.ts file( src/middleware.ts).
+2. Code
+```
+  import { NextRequest, NextResponse } from "next/server";
+  
+  export function middleware(request: NextRequest){
+      return NextResponse.redirect(new URL('/', request.url));
+  }
+  
+  export const config = {
+      matcher: '/profile'
+  }
+```
+## Conditional statements
+Now when we redirect /profile url it will redirect to /hello route.
+```
+export function middleware(request: NextRequest){
+    if(request.nextUrl.pathname === '/profile'){
+        return NextResponse.redirect(new URL('/hello', request.nextUrl));
+    }
+}
+```
 
 
 
