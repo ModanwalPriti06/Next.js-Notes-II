@@ -9,6 +9,16 @@
 | 23      | Cashing in Route Handler(force-static, revalidate)  |
 | 24      | Middleware                                          |
 
+# Routing section summary
+- Route definition
+- Pages and layouts
+- Dynamic routes
+- Route groups
+- Linking and navigation
+- Loading and error states
+- Parallel and intercepting routes
+- Route handlers and middleware
+
 
 | -       | Uncovered Topic                                     |
 | ------- | --------------------------------------------------- |
@@ -24,8 +34,6 @@
 | 19      | Authentication (NextAuth or Custom Auth)            |
 | 20      | Database Integration (Prisma, MongoDB, Supabase)    |
 | 21      | Deployment (Vercel / Node Server)                   |
-| 23      | Loading UI (loading.js)                             |
-| 24      | Caching & Revalidation                              |
 | 25      | Internationalization (i18n)                         |
 
 # 19. Routes Handler
@@ -385,8 +393,34 @@ export function middleware(request: NextRequest){
 }
 ```
 
+>[!Important]
+> The request path beyond redirect middleware also support URL rewrite a feature perfeact for handling lagacy URLs and improving SEO. Instead of redirect can use rewrite to keep the url inthe browser unchanged while serving different content.
 
+when we go /profile then it will redirect hello but still URl is same not changed but content will be show of hello-> page.tsx file.
+```
+export function middleware(request: NextRequest){
+    if(request.nextUrl.pathname === '/profile'){
+        return NextResponse.rewrite(new URL('/hello', request.nextUrl));
+    }
+}
+```
 
+## Cookie & Headers in Middleware
+```
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(request: NextRequest) {
+  const response = NextResponse.next();
+
+  const themePreference = request.cookies.get("theme");
+  if (!themePreference) {
+    response.cookies.set("theme", "dark");
+  }
+  response.headers.set('custome-header': 'custome-value');
+  return response;
+}
+```
 
 
 
