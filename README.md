@@ -8,7 +8,7 @@
 | 22      | COOKIE in Route Handler/ Redirect in Route Handler  |
 | 23      | Cashing in Route Handler(force-static, revalidate)  |
 | 24      | Middleware                                          |
-| 25      | Rendering                                           |
+| 25      | Rendering, CSR/ SSR/  RSCs                          |
  
 # Routing section summary
 - Route definition
@@ -424,8 +424,11 @@ export function middleware(request: NextRequest) {
 ```
 
 # 25. Rendering
+Rendering is the process of transforming the component code you write into user interfaces that users can see and interact with.
+- In Next.js, the tricky part to building a performant application is figuring out when and where this transformation should happen.
+- CSR, SSR and RSCs?
 
-
+## 25.1 Client-side Rendering
 
 
 
