@@ -428,7 +428,61 @@ Rendering is the process of transforming the component code you write into user 
 - In Next.js, the tricky part to building a performant application is figuring out when and where this transformation should happen.
 - CSR, SSR and RSCs?
 
-## 25.1 Client-side Rendering
+## 25.1 Client-side Rendering (CSR)
+<img width="1032" height="508" alt="Screenshot 2026-01-05 at 10 41 50 PM" src="https://github.com/user-attachments/assets/10be085f-6910-4516-9447-1c31c8f73594" />
+
+- This whole approach – where your browser (the client) transforms React components into what you see on screen – that's what we call client-side rendering (CSR).
+- CSR became super popular for SPAs, and everyone was using it.
+- It wasn't long before developers began noticing some inherent drawbacks to this approach.
+
+### Drawbacks of CSR
+1. SEO
+  - When search engines crawl your site, they're mainly looking at HTML content. But with CSR, your initial HTML is basically just an empty div — not great for search engines trying to figure out what your page is about.
+  - When you have a lot of nested components making API calls, the meaningful content might load too slowly for search engines to even catch it.
+2. Performance
+  - Your browser (the client) has to do everything: fetch data, build the UI, make everything interactive… that's a lot of work!
+  - Users often end up staring at a blank screen or a loading spinner while all this happens
+  - Every time you add a new feature to your app, that JavaScript bundle gets bigger, making users wait even longer
+  - This is especially frustrating for people with slower internet connections
+
+### Recollecting drawbacks of CSR
+1. SEO
+  - Since content relies on JavaScript to render on the client side, search engines often struggle to index it properly
+2. Performance and UX
+  - Users can suffer from slow load times, as their browsers download, parse, and execute JavaScript before seeing any meaningful content
+
+## 25.1 Server-side Rendering (SSR)
+<img width="1032" height="508" alt="Screenshot 2026-01-05 at 10 43 09 PM" src="https://github.com/user-attachments/assets/7a5f0480-b9e0-47a0-a6fd-a00fce31a25a" />
+
+- Search engines can now easily index the server-rendered content, solving our SEO problem
+- Users see actual HTML content right away instead of staring at a blank screen or loading spinner
+
+#### Hydration
+- During hydration, React takes control in the browser and reconstructs the component tree in memory, using the server-rendered HTML as a blueprint
+- It carefully maps out where all the interactive elements should go, then hooks up the JavaScript logic
+- This involves initializing application state, adding click and mouseover handlers, and setting up all the dynamic features needed for a full interactive user experience
+
+### Server-side solutions
+
+1. Static Site Generation (SSG)
+2. Server-Side Rendering (SSR)
+
+- **SSG** happens during build time when you deploy your application to the server. This results in pages that are already rendered and ready to serve. It's perfect for content that stays relatively stable, like blog posts.
+- **SSR**, on the other hand, renders pages on-demand when users request them. It's ideal for personalized content like social media feeds where the HTML changes based on who's logged in. Server-Side Rendering (SSR) was a significant improvement over Client-Side Rendering (CSR), providing faster initial page loads and better SEO.
+
+### Drawback of Server-side Rendering (SSR)
+
+1. **You have to fetch everything before you can show anything**
+  - Components cannot start rendering and then pause or “wait” while data is still being loaded.
+  - If a component needs to fetch data from a database or another source (like an API), this fetching must be completed before the server can begin rendering the page.
+  - This can delay the server’s response time to the browser, as the server must finish collecting all necessary data before any part of the page can be sent to the client.
+2. **You have to load everything before you can hydrate anything**
+  - For successful hydration, where React adds interactivity to the server-rendered HTML, the component tree in the browser must exactly match the server-generated component tree.
+  - This means that all the JavaScript for the components must be loaded on the client before you can start hydrating any of them.   
+3. **You have to hydrate everything before you can interact with anything**
+  - React hydrates the component tree in a single pass, meaning once it starts hydrating, it won’t stop until it’s finished with the entire tree.
+  - As a consequence, all components must be hydrated before you can interact with any of them.
+
 
 
 
