@@ -9,7 +9,8 @@
 | 23      | Cashing in Route Handler(force-static, revalidate)  |
 | 24      | Middleware                                          |
 | 25      | Rendering, CSR/ SSR/  RSCs                          |
- 
+| 26      | React Server Components                             |
+  
 # Routing section summary
 - Route definition
 - Pages and layouts
@@ -483,8 +484,14 @@ Rendering is the process of transforming the component code you write into user 
   - React hydrates the component tree in a single pass, meaning once it starts hydrating, it won’t stop until it’s finished with the entire tree.
   - As a consequence, all components must be hydrated before you can interact with any of them.
 
+# 26. React Server Components (RSC)
+React Server Components (RSC) represent a new architecture designed by the React team. This approach leverages the strengths of both server and client environments to optimize efficiency, load times, and interactivity
 
+#### The architecture introduces a dual-component model
+- Client Components
+- Server Components
 
+- This distinction is based not on the components' functionality but rather on their execution environment and the specific systems they are designed to interact with
 
 
 
