@@ -8,8 +8,8 @@
 | 22      | COOKIE in Route Handler/ Redirect in Route Handler  |
 | 23      | Cashing in Route Handler(force-static, revalidate)  |
 | 24      | Middleware                                          |
-| 25      | Rendering, CSR/ SSR/  RSCs                          |
-| 26      | React Server Components                             |
+| 25      | Rendering, CSR/ SSR (Server-Side Rendering)/  RSCs  |
+| 26      | React Server Components, Client Components          |
   
 # Routing section summary
 - Route definition
@@ -24,10 +24,8 @@
 
 | -       | Uncovered Topic                                     |
 | ------- | --------------------------------------------------- |
-| 8       | Server Components vs Client Components              |
 | 9       | Data Fetching (fetch, getServerSideProps, etc.)     |
 | 10      | Static Site Generation (SSG)                        |
-| 11      | Server-Side Rendering (SSR)                         |
 | 12      | Incremental Static Regeneration (ISR)               |
 | 14      | Environment Variables                               |
 | 15      | Styling (CSS, Tailwind, Modules, Styled Components) |
@@ -488,12 +486,67 @@ Rendering is the process of transforming the component code you write into user 
 React Server Components (RSC) represent a new architecture designed by the React team. This approach leverages the strengths of both server and client environments to optimize efficiency, load times, and interactivity
 
 #### The architecture introduces a dual-component model
-- Client Components
-- Server Components
-
+1. Client Components
+2. Server Components
 - This distinction is based not on the components' functionality but rather on their execution environment and the specific systems they are designed to interact with
 
+## 26.1 Client Component
+Client Components are the familiar React components we've been using. They are typically rendered on the client-side (CSR) but, they can also be rendered to HTML on the server (SSR), allowing users to immediately see the page's HTML content rather than a blank screen.
+- **"client components"** can render on the server
+- Optimization strategy
+- Client components primarily operate on the client but can (and should) also run once on the server for better performance
 
+### Client Components contd.
+- Client Components have full access to the client environment, such as the browser, allowing them to use state, effects, and event listeners for handling interactivity.
+- They can also access browser-exclusive APIs like geolocation or localStorage, allowing you to build UI for specific use cases.
+- In fact, the term “Client Component” doesn’t signify anything new; it simply helps differentiate these components from the newly introduced Server Components.
+  
+## 26.2 Server Component
+Server Components represent a new type of React component specifically designed to operate exclusively on the server And unlike client components, their code stays on the server and is never downloaded to the client
+- This design choice offers multiple benefits to React applications
+
+### Benefits of Server Components
+**Smaller bundle sizes**
+
+- Since Server Components stay on the server, all their dependencies stay there too
+- This is fantastic for users with slower connections or less powerful devices since they don't need to download, parse, and execute that JavaScript
+- Plus, there's no hydration step, making your app load and become interactive faster
+
+### Benefits of Server Components contd.
+- **Direct access to server-side resources**
+  - Server Components can talk directly to databases and file systems, making data fetching super efficient without any client-side processing
+  - They use the server's power and proximity to data sources to manage compute-intensive rendering tasks
+
+- **Enhanced security**
+  - Since Server Components run only on the server, sensitive data and logic – like API keys and tokens – never leave the server
+ 
+- **Improved data fetching**
+  - Server Components allow you to move data fetching to the server, closer to your data source.
+  - This can improve performance by reducing the time it takes to fetch data needed for rendering, and the number of requests the client needs to make.
+
+- **Caching**
+  - When you render on the server, you can cache the results and reuse them for different users and requests.
+  - This means better performance and lower costs since you're not re-rendering and re-fetching data all the time.
+ 
+- **Faster initial page load and First Contentful Paint**
+  - By generating HTML on the server, users see your content immediately — no waiting for JavaScript to download and execute.
+
+- **Improved SEO**
+  - Search engine bots can easily read the server-rendered HTML, making your pages more indexable.
+
+- **Efficient streaming**
+  - Server Components can split the rendering process into chunks that stream to the client as they’re ready.
+  - This means users start seeing content faster instead of waiting for the entire page to render on the server.
+
+### RSC contd.
+- Server Components handle data fetching and static rendering, while Client Components take care of rendering the interactive elements.
+- The beauty of this setup is that you get the best of both server and client rendering while using a single language, framework, and set of APIs.
+
+### RSC key takeaways
+- React Server Components offer a new approach to building React apps by separating components into two: Server Components and Client Components.
+- Server Components run exclusively on the server — they fetch data and prepare content without sending code to the browser.
+- This makes your app faster because users download less code. However, they can't handle any interactions.
+- Client Components, on the other hand, run in the browser and manage all the interactive parts like clicks and typing.
 
 
 
