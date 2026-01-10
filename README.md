@@ -10,6 +10,8 @@
 | 24      | Middleware                                          |
 | 25      | Rendering, CSR/ SSR (Server-Side Rendering)/  RSCs  |
 | 26      | React Server Components, Client Components          |
+| 27      | Server Components, Client Components                |
+
   
 # Routing section summary
 - Route definition
