@@ -551,6 +551,9 @@ Server Components represent a new type of React component specifically designed 
 - Client Components, on the other hand, run in the browser and manage all the interactive parts like clicks and typing.
 
 
+# Client Component
+
+# Server Component
 
 
 
