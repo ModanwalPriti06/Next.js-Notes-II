@@ -22,21 +22,6 @@
 - Parallel and intercepting routes
 - Route handlers and middleware
 
-
-| -       | Uncovered Topic                                     |
-| ------- | --------------------------------------------------- |
-| 9       | Data Fetching (fetch, getServerSideProps, etc.)     |
-| 10      | Static Site Generation (SSG)                        |
-| 12      | Incremental Static Regeneration (ISR)               |
-| 14      | Environment Variables                               |
-| 15      | Styling (CSS, Tailwind, Modules, Styled Components) |
-| 16      | Optimizing Images using next/image                  |
-| 18      | Metadata & SEO                                      |
-| 19      | Authentication (NextAuth or Custom Auth)            |
-| 20      | Database Integration (Prisma, MongoDB, Supabase)    |
-| 21      | Deployment (Vercel / Node Server)                   |
-| 25      | Internationalization (i18n)                         |
-
 # 19. Routes Handler
 A Route Handler is how you create backend APIs (like Express routes) inside your Next.js app.
 - The app router lets you create custom request handlers for your routes using a feature called Route Handlers
